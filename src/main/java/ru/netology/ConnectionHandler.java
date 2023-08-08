@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 public class ConnectionHandler<socket> implements Runnable {
     private static String CONTENT = "public";
     private static Socket socket;
+
     public ConnectionHandler(Socket socket) {
         this.socket = socket;
     }
@@ -16,9 +17,9 @@ public class ConnectionHandler<socket> implements Runnable {
     @Override
     public void run() {
         try (
-              final var in = new BufferedReader((new InputStreamReader((socket.getInputStream()))));
-              final var out = new BufferedOutputStream(socket.getOutputStream())
-              ) {
+                final var in = new BufferedReader((new InputStreamReader((socket.getInputStream()))));
+                final var out = new BufferedOutputStream(socket.getOutputStream())
+        ) {
             final var request = in.readLine();
             final var requestParts = request.split("\s");
             if (requestParts.length != 3) {
