@@ -5,8 +5,8 @@ public class Main {
     static final int THREADS_NUMBER = 64;
 
     public static void main(String[] args) {
-        Server server = new Server(LISTEN_PORT, THREADS_NUMBER);
-        server.start();
+        Server server = new Server(THREADS_NUMBER);
+        server.start(LISTEN_PORT);
     }
 }
 
